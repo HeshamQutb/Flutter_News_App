@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.orange
+          selectedItemColor: Colors.red
         )
       ),
       home: const NewsLayout(),
