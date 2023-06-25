@@ -21,23 +21,7 @@ class ScienceScreen extends StatelessWidget {
 
           var list =NewsCubit.get(context).science;
 
-          return ConditionalBuilder(
-              condition: list.isNotEmpty,
-              builder: (context)=> ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context,index) => newsItemBuilder(list[index]) ,
-                separatorBuilder: (context,index) => Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Container(
-                    height: 1,
-                    width: double.infinity,
-                    color: Colors.grey,
-                  ),
-                ),
-                itemCount: list.length,
-              ),
-              fallback: (context)=>Center(child: CircularProgressIndicator())
-          );
+          return articleBuilder(list);
         });
   }
 }

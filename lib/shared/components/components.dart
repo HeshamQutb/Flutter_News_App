@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -53,3 +54,23 @@ Widget newsItemBuilder(article) => Padding(
     ],
   ),
 );
+
+
+Widget articleBuilder(list) => ConditionalBuilder(
+    condition: list.isNotEmpty,
+    builder: (context)=> ListView.separated(
+      physics: BouncingScrollPhysics(),
+      itemBuilder: (context,index) => newsItemBuilder(list[index]) ,
+      separatorBuilder: (context,index) => Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Container(
+          height: 1,
+          width: double.infinity,
+          color: Colors.grey,
+        ),
+      ),
+      itemCount: list.length,
+    ),
+    fallback: (context)=>Center(child: CircularProgressIndicator())
+);
+

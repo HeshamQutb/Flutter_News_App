@@ -18,27 +18,11 @@ class BusinessScreen extends StatelessWidget {
         listener: (context, state) {
 
     },
-    builder: (context, state) {
+        builder: (context, state) {
 
           var list =NewsCubit.get(context).business;
 
-          return ConditionalBuilder(
-              condition: list.isNotEmpty,
-              builder: (context)=> ListView.separated(
-                physics: BouncingScrollPhysics(),
-                  itemBuilder: (context,index) => newsItemBuilder(list[index]) ,
-                  separatorBuilder: (context,index) => Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Container(
-                      height: 1,
-                      width: double.infinity,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  itemCount: list.length,
-              ),
-              fallback: (context)=>Center(child: CircularProgressIndicator())
-          );
+          return articleBuilder(list);
     });
   }
 }
