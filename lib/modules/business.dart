@@ -27,10 +27,13 @@ class BusinessScreen extends StatelessWidget {
               builder: (context)=> ListView.separated(
                 physics: BouncingScrollPhysics(),
                   itemBuilder: (context,index) => newsItemBuilder(list[index]) ,
-                  separatorBuilder: (context,index) => Container(
-                    height: 1,
-                    width: double.infinity,
-                    color: Colors.grey,
+                  separatorBuilder: (context,index) => Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Container(
+                      height: 1,
+                      width: double.infinity,
+                      color: Colors.grey,
+                    ),
                   ),
                   itemCount: list.length,
               ),
