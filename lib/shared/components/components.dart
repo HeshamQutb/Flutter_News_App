@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget newsItemBuilder(article) => Padding(
+Widget newsItemBuilder(article, context) => Padding(
   padding: const EdgeInsets.all(15.0),
   child: Row(
     children: [
@@ -14,7 +13,11 @@ Widget newsItemBuilder(article) => Padding(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           image: DecorationImage(
-              image: NetworkImage('${article['urlToImage']}'),
+              image: NetworkImage(
+                '${article['urlToImage']}' == 'null'
+                    ? 'https://t4.ftcdn.net/jpg/04/00/24/31/360_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg'
+                    : '${article['urlToImage']}',
+              ),
               fit: BoxFit.cover
           ),
 
@@ -22,7 +25,7 @@ Widget newsItemBuilder(article) => Padding(
       ),
       SizedBox(width: 10.0,),
       Expanded(
-        child: Container(
+        child: SizedBox(
           height: 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -32,10 +35,7 @@ Widget newsItemBuilder(article) => Padding(
               Expanded(
                 child: Text(
                   '${article['title']}',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.bodyLarge,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -56,13 +56,13 @@ Widget newsItemBuilder(article) => Padding(
 );
 
 
-Widget articleBuilder(list) => ConditionalBuilder(
+Widget articleBuilder(list,context) => ConditionalBuilder(
     condition: list.isNotEmpty,
     builder: (context)=> ListView.separated(
       physics: BouncingScrollPhysics(),
-      itemBuilder: (context,index) => newsItemBuilder(list[index]) ,
+      itemBuilder: (context,index) => newsItemBuilder(list[index],context) ,
       separatorBuilder: (context,index) => Padding(
-        padding: const EdgeInsets.only(left: 10),
+        padding: EdgeInsets.only(left: 20.0),
         child: Container(
           height: 1,
           width: double.infinity,

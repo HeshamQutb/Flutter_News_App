@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/modules/business.dart';
@@ -34,7 +36,7 @@ class NewsCubit extends Cubit<NewsStates> {
 
   void navBarChange(int index){
     currentIndex = index;
-    emit(NewsNavBarBarChangeState());
+    emit(NewsNavBarChangeState());
   }
 
 
@@ -120,6 +122,15 @@ class NewsCubit extends Cubit<NewsStates> {
       emit(NewsGetScienceSuccessState());
     }
 
+  }
+
+
+
+  bool isDark = false;
+
+  void changeMode() {
+    isDark = !isDark;
+    emit(NewsChangeModeState());
   }
 
 

@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +21,7 @@ class BusinessScreen extends StatelessWidget {
 
           var list =NewsCubit.get(context).business;
 
-          return articleBuilder(list);
+          return articleBuilder(list,context);
     });
   }
 }
