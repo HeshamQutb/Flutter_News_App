@@ -5,6 +5,10 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:news_app/shared/bloc_observer.dart';
 import 'package:news_app/shared/cubit/App/cubit.dart';
 import 'package:news_app/shared/cubit/App/states.dart';
+import 'package:news_app/shared/cubit/cubit.dart';
+import 'package:news_app/shared/cubit/cubit.dart';
+import 'package:news_app/shared/cubit/cubit.dart';
+import 'package:news_app/shared/cubit/cubit.dart';
 import 'package:news_app/shared/network/local/cache_helper.dart';
 import 'package:news_app/shared/network/remote/dio_helper.dart';
 import 'layout/home_layout.dart';
@@ -31,9 +35,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return MultiBlocProvider(
+  providers: [
+    BlocProvider(
       create: (context) => AppCubit()..changeMode(fromShared: isDark),
-      child: BlocConsumer<AppCubit, AppStates>(
+),
+    BlocProvider(
+      create: (context) => NewsCubit()..getBusiness()..getSports()..getScience(),
+    ),
+  ],
+  child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {
 
         },
@@ -113,7 +124,7 @@ class MyApp extends StatelessWidget {
           );
         },
       ),
-    );
+);
   }
 }
 
