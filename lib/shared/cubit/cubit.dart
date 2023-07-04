@@ -6,7 +6,6 @@ import 'package:news_app/modules/business.dart';
 import 'package:news_app/modules/science.dart';
 import 'package:news_app/modules/sports.dart';
 import 'package:news_app/shared/cubit/states.dart';
-
 import '../network/remote/dio_helper.dart';
 
 class NewsCubit extends Cubit<NewsStates> {
@@ -125,13 +124,6 @@ class NewsCubit extends Cubit<NewsStates> {
   }
 
 
-
-  bool isDark = false;
-
-  void changeMode() {
-    isDark = !isDark;
-    emit(NewsChangeModeState());
-  }
 
 
 

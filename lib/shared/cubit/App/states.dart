@@ -1,5 +1,4 @@
 
-import '../states.dart';
 
 abstract class AppStates {}
 
