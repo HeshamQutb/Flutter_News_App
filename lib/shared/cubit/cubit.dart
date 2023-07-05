@@ -44,7 +44,7 @@ class NewsCubit extends Cubit<NewsStates> {
     emit(NewsGetBusinessLoadingState());
     if(business.isEmpty){
       DioHelper.getData(url: 'v2/top-headlines', query: {
-        'country':'eg',
+        'country':'ae',
         'category':'business',
         'apiKey':'4a6a9d4a13b14612a805959fe8dc8830',
       },
@@ -72,7 +72,7 @@ class NewsCubit extends Cubit<NewsStates> {
     emit(NewsGetSportsLoadingState());
     if(sports.isEmpty){
       DioHelper.getData(url: 'v2/top-headlines', query: {
-        'country':'eg',
+        'country':'ae',
         'category':'Sports',
         'apiKey':'4a6a9d4a13b14612a805959fe8dc8830',
       },
@@ -100,7 +100,7 @@ class NewsCubit extends Cubit<NewsStates> {
     emit(NewsGetScienceLoadingState());
     if(science.isEmpty){
       DioHelper.getData(url: 'v2/top-headlines', query: {
-        'country':'eg',
+        'country':'ae',
         'category':'science',
         'apiKey':'4a6a9d4a13b14612a805959fe8dc8830',
       },

@@ -6,9 +6,6 @@ import 'package:news_app/shared/bloc_observer.dart';
 import 'package:news_app/shared/cubit/App/cubit.dart';
 import 'package:news_app/shared/cubit/App/states.dart';
 import 'package:news_app/shared/cubit/cubit.dart';
-import 'package:news_app/shared/cubit/cubit.dart';
-import 'package:news_app/shared/cubit/cubit.dart';
-import 'package:news_app/shared/cubit/cubit.dart';
 import 'package:news_app/shared/network/local/cache_helper.dart';
 import 'package:news_app/shared/network/remote/dio_helper.dart';
 import 'layout/home_layout.dart';
@@ -103,7 +100,7 @@ class MyApp extends StatelessWidget {
                   iconTheme: const IconThemeData(
                       color: Colors.white,
                       size: 30.0
-                  )
+                  ),
               ),
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   type: BottomNavigationBarType.fixed,
@@ -120,6 +117,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
             themeMode: AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+
             home: const NewsLayout(),
           );
         },
