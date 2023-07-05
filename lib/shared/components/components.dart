@@ -2,6 +2,7 @@
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/modules/business.dart';
 import 'package:news_app/modules/web_view.dart';
 
 Widget newsItemBuilder(article, context) => InkWell(
@@ -64,7 +65,7 @@ Widget newsItemBuilder(article, context) => InkWell(
       ),
     );
 
-Widget articleBuilder(list, context) => ConditionalBuilder(
+Widget articleBuilder(list, context,{isSearch = false}) => ConditionalBuilder(
     condition: list.isNotEmpty,
     builder: (context) => ListView.separated(
           physics: BouncingScrollPhysics(),
@@ -80,4 +81,4 @@ Widget articleBuilder(list, context) => ConditionalBuilder(
           ),
           itemCount: list.length,
         ),
-    fallback: (context) => Center(child: CircularProgressIndicator()));
+    fallback: (context) => isSearch ? BusinessScreen() :Center(child: CircularProgressIndicator()));

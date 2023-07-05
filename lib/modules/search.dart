@@ -14,7 +14,7 @@ class SearchScreen extends StatelessWidget {
     var searchController = TextEditingController();
     return BlocConsumer<NewsCubit, NewsStates>(
       listener: (context, state) {
-        // TODO: implement listener
+
       },
       builder: (context, state) {
         var list =NewsCubit.get(context).search;
@@ -42,7 +42,7 @@ class SearchScreen extends StatelessWidget {
                       border: OutlineInputBorder()
                   ),
                 ),
-                Expanded(child: articleBuilder(list, context)),
+                Expanded(child: articleBuilder(list, context,isSearch: true)),
               ],
             ),
           ),
